@@ -21,6 +21,19 @@ function Movies(main) {
                     res.json(movies);
                 })
             .catch(next);
+        },
+
+        'save': (req, res, next)=>{
+            debug(".save called");
+
+            var title  = req.swagger.params.movie.value.name ? req.swagger.params.movie.value.name : null;
+            var year  = req.swagger.params.movie.value.image ? req.swagger.params.movie.value.image : null;
+
+            main.libs.Movies.save({title: title, year: year})
+            .then((movies)=>{
+                    res.json(movies);
+                })
+            .catch(next);
         }
 
     };//end return
