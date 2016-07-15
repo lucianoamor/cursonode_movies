@@ -81,22 +81,6 @@ paths:
           schema:
             $ref: '#/definitions/movie'
 
-  /movies/del/{id}:
-    get:
-      tags:
-        - movies
-      summary: delete movie by id
-      x-swagger-router-controller: movies.del
-      parameters:
-        - name: id
-          in: path
-          required: true
-          type: string
-
-      responses:
-        '200':
-          description: movie
-
 definitions:
   movie:
     type: object

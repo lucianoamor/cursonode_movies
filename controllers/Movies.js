@@ -18,7 +18,14 @@ function Movies(main) {
 
             main.libs.Movies.search({title: title, year: year, id: id})
             .then((movies)=>{
-                    res.json(movies);
+                    if(movies == []) {
+                        main.libs.Movies.omdb(title)
+                        .then((movie)=>{
+                            res.json(movie);
+                        });
+                    } else {
+                        res.json(movies);
+                    }
                 })
             .catch(next);
         },
